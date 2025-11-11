@@ -1,0 +1,45 @@
+package leetcode;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		System.out.println(closeStrings("abcc", "bcaa"));
+	}
+
+	public static boolean closeStrings(String word1, String word2) {
+
+		// 길이 다르면 false
+        if (word1.length() != word2.length())
+			return false;
+
+		// frequency of alphabets
+		int[] cnt1 = new int[26];
+		int[] cnt2 = new int[26];
+
+        // 순회하면서 알파벳과 빈도수 적용
+		for (int i = 0; i < word1.length(); i++) { 
+			cnt1[word1.charAt(i) - 'a']++;
+            cnt2[word2.charAt(i) - 'a']++;
+		}
+
+        // 순회하면서 알파벳 다른게 있는지 확인
+        for(int i = 0; i < 26; i++){
+            if((cnt1[i] != 0 && cnt2[i] == 0) || (cnt1[i] == 0 && cnt2[i] != 0))
+                return false;
+        }
+
+		// 개수 정렬
+		Arrays.sort(cnt1);
+		Arrays.sort(cnt2);
+		for (int i = 0; i < cnt1.length; i++) {
+			if (cnt1[i] != cnt2[i]) return false;
+		}
+
+		return true;
+	}
+
+}

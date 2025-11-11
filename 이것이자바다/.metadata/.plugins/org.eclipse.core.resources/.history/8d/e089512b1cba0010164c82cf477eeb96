@@ -1,0 +1,43 @@
+package ch15.sec04.exam01;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class HashMapEx {
+	public static void main(String[] args) {
+		Map<String, Integer> map = new HashMap<>();
+		
+		// 객체 저장
+		map.put("여포", 85);
+		map.put("제갈량", 95);
+		map.put("동탁", 100);
+		map.put("관우", 70);
+		
+		// 키로 값 가져오기
+		int value = map.get("관우");
+		System.out.println(value);
+		
+		// 1. Set 컬렉션 얻는 법 - 엔트리 사용
+		Set<Entry<String, Integer>> entry = map.entrySet();
+		Iterator<Entry<String, Integer>> entryIter = entry.iterator();
+		while(entryIter.hasNext()) {
+			Entry<String, Integer> e = entryIter.next();
+			String key = e.getKey();
+			Integer val = e.getValue();
+			System.out.println(key + " : " + val);
+		}
+		System.out.println();
+		
+		// 키로 엔트리 삭제
+		map.remove("여포");
+		System.out.println("map.size = " + map.size());
+		System.out.println(map);
+		
+		
+		
+	}
+
+}

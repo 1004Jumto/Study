@@ -1,0 +1,65 @@
+package ch19.sec03.exam01;
+
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class ServerEx {
+	private static ServerSocket sock = null;
+
+	public static void main(String[] args) {
+
+		System.out.println("------------------------------------------------");
+		System.out.println("서버를 종료하려명 q 또는 Q를 입력하고 Enter 키를 입력하세요.");
+		System.out.println("------------------------------------------------");
+
+		startServer();
+
+		Scanner scan = new Scanner(System.in);
+		while (true) {
+			String key = scan.nextLine();
+			if (key.toLowerCase().equals("q"))
+				break;
+		}
+		scan.close();
+
+		stopServer();
+
+	}
+
+	private static void startServer() {
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				try {
+					sock = new ServerSocket(50001);
+					System.out.println("서버> 시작됨");
+				
+				
+					while(true) {
+						System.out.println();
+						System.out.println("서버 요청 기다리는중..");
+						
+						Socket socket = sock.accept();
+						InetSocketAddress isa = (InetSocketAddress) socket.getRemoteSocketAddress();
+						System.out.println("서버> " + isa.getHostString() + "의 연결 수락..");
+						
+						socket.close();
+						System.out.println("서버> " + isa.getHostString() + "의 연결 끊김..");
+					}
+				}
+				catch (Exception e) { System.out.println("서버> " + e.getMessage());	}
+			}
+		};
+		
+		thread.start();
+	}
+
+	private static void stopServer() {
+		try {
+			sock.close();
+			System.out.println("서버> 종료됨..");
+		} catch (Exception e) {}
+	}
+}

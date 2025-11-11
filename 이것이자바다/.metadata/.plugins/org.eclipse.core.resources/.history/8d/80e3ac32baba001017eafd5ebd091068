@@ -1,0 +1,41 @@
+package ch15;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
+public class SortEx {
+
+	public static void main(String[] args) {
+
+		// 배열 (오름차순)정렬 방법 1
+		int[] arr = { 6, 3, 4, 7, 1, 8, 0 };
+		Arrays.sort(arr);
+		System.out.println(Arrays.toString(arr));
+		// 문제는 내림차순 불가 -> int 대신 Integer 사용
+		Integer[] iarr = { 6, 3, 4, 7, 1, 8, 0 };
+		Arrays.sort(iarr, Comparator.reverseOrder());
+		System.out.println(Arrays.toString(iarr));
+		
+		// 문자열 배열 오름차순 정렬 
+		String[] sarr = { "서울", "도쿄", "상하이", "파리", "런던", "헬싱키", "프랑크프루트" };
+		Arrays.sort(sarr);
+		System.out.println(Arrays.toString(sarr));
+		// 문자열 내림차순 정렬
+		Arrays.sort(sarr, Comparator.reverseOrder());
+		System.out.println(Arrays.toString(sarr));
+		
+		
+		/* 컬렉션 정렬 */
+		List<Integer> list =  new ArrayList<>();
+		list.add(8); list.add(1); list.add(6); list.add(2); list.add(4);
+		
+		
+		
+		
+		
+		
+	}
+
+}

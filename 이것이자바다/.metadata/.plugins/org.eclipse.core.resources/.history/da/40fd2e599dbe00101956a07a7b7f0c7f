@@ -1,0 +1,58 @@
+package leetcode;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		closeStrings("abcc", "bcaa");
+	}
+
+	public static boolean closeStrings(String word1, String word2) {
+
+		if (word1.length() != word2.length())
+			return false;
+
+		// 순회하면서 문자 삽입
+		Set<Character> set1 = new HashSet<>();
+		Set<Character> set2 = new HashSet<>();
+
+		// check for numbers of alphabets
+		int[] cnt1 = new int[24];
+		int[] cnt2 = new int[24];
+
+		for (int i = 0; i < word1.length(); i++) {
+			set1.add(word1.charAt(i));
+			cnt1[word1.charAt(i) - 'a']++;
+		}
+
+		for (int i = 0; i < word2.length(); i++) {
+			set2.add(word2.charAt(i));
+			cnt2[word2.charAt(i) - 'a']++;
+		}
+		System.out.println(set1);
+		System.out.println(set2);
+		System.out.println(Arrays.toString(cnt1));
+		System.out.println(Arrays.toString(cnt2));
+
+		// 순회하며 set1 에 있는 문자가 set2에 있는지 확인
+		if (set1.size() != set2.size())
+			return false;
+		for (char c : set1) {
+			if (!set2.contains(c))
+				return false;
+		}
+
+		// 개수 정렬
+		Arrays.sort(cnt1);
+		Arrays.sort(cnt2);
+		for (int i = 0; i < cnt1.length; i++) {
+			if (cnt1[i] == cnt2[i]) return false;
+		}
+
+		return true;
+	}
+
+}

@@ -1,0 +1,10 @@
+package ch15.sec02.exam02;
+
+public class VectorEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

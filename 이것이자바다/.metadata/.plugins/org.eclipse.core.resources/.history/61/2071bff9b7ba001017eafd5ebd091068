@@ -1,0 +1,16 @@
+package ch15;
+
+import java.util.Arrays;
+
+public class SortEx {
+
+	public static void main(String[] args) {
+		int[] arr = {6,3,4,7,1,8,0};
+		Arrays.sort(arr);
+		System.out.println(Arrays.toString(arr));
+		
+		
+		
+	}
+
+}

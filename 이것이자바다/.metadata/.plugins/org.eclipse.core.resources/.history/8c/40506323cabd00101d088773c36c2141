@@ -1,0 +1,18 @@
+package ch17;
+
+import java.util.ArrayList;
+
+public class StreamEx {
+
+	public static void main(String[] args) {
+		List<Student> list = new ArrayList<E>();
+		
+		
+		for(int i=0; i<list.size();i++	) {
+			System.out.println(list.get(i));
+		}
+		list.strean().forEach(null);
+		
+	}
+
+}

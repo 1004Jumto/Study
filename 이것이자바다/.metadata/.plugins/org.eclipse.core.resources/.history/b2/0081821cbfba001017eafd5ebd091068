@@ -1,0 +1,93 @@
+package ch15;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class SortEx {
+
+	public static void main(String[] args) {
+
+		// 배열 (오름차순)정렬 방법 1
+		int[] arr = { 6, 3, 4, 7, 1, 8, 0 };
+		Arrays.sort(arr);
+		System.out.println(Arrays.toString(arr));
+		// 문제는 내림차순 불가 -> int 대신 Integer 사용
+		Integer[] iarr = { 6, 3, 4, 7, 1, 8, 0 };
+		Arrays.sort(iarr, Comparator.reverseOrder());
+		System.out.println(Arrays.toString(iarr));
+		System.out.println();
+		
+		// 문자열 배열 오름차순 정렬 
+		String[] sarr = { "서울", "도쿄", "상하이", "파리", "런던", "헬싱키", "프랑크프루트" };
+		Arrays.sort(sarr);
+		System.out.println(Arrays.toString(sarr));
+		// 문자열 내림차순 정렬
+		Arrays.sort(sarr, Comparator.reverseOrder());
+		System.out.println(Arrays.toString(sarr));
+		System.out.println();
+		
+		/* 컬렉션 정렬 */
+		List<Integer> list =  new ArrayList<>();
+		list.add(8); list.add(1); list.add(6); list.add(2); list.add(4);
+		System.out.println(list);
+		Collections.sort(list);
+		System.out.println(list);
+		Collections.sort(list, Comparator.reverseOrder());
+		System.out.println(list);
+		
+//		Comperator 구현 객체를 익명구현객체 혹은 람다식으로 사용.
+		// 리스트 안에 맵 객체
+		List<Map<String, Object>> mlist = new ArrayList<>();
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("name", "빨간머리앤");
+		m.put("age", 15);
+		mlist.add(m);
+		
+		m = new HashMap<String, Object>();
+		m.put("name", "알프스하이디");
+		m.put("age", 13);
+		mlist.add(m);
+		
+		m = new HashMap<String, Object>();
+		m.put("name", "영심이");
+		m.put("age", 10);
+		mlist.add(m);
+		
+		m = new HashMap<String, Object>();
+		m.put("name", "홍길동");
+		m.put("age", 20);
+		mlist.add(m);
+		
+		m = new HashMap<String, Object>();
+		m.put("name", "달려라하니");
+		m.put("age", 14);
+		mlist.add(m);
+		
+		// 정렬 커스텀 1 - 익명 구현 객체 
+		Collections.sort(mlist, new Comparator<Map>() {
+			@Override
+			public int compare(Map m1, Map m2) {
+				return (int)m1.get("age") - (int)m2.get("age");		// 오름차순
+//				return (int)m2.get("age") - (int)m1.get("age");		// 내림차순
+			}
+		});
+		System.out.println(mlist);
+		
+		// 정렬 커스텀 2 - 람다식
+		Collections.sort(mlist, (Map m1, Map m2) -> {
+
+//			return (int)m1.get("age") - (int)m2.get("age");		// 오름차순
+			return (int)m2.get("age") - (int)m1.get("age");		// 내림차순
+		});
+		System.out.println(mlist);
+		
+		
+		
+	}
+
+}
