@@ -83,6 +83,7 @@ public class Solution {
 		return soldTickets;
 	}
 	
+	// 경매 낙찰 금액
 	public static int[] solution(int n, int[] amounts) {
 		// 참가자 m명, 물건 n개
 		// (참가자 번호, 자본) 쌍으로 pair를 만들고
@@ -97,7 +98,7 @@ public class Solution {
 			temp[0] = i+1; temp[1] = amounts[i];
 			list.add(temp);
 		}
-//		for(int[] a : list) System.out.println(Arrays.toString(a));
+		for(int[] a : list) System.out.println(Arrays.toString(a));
 		
 		for(int i = 0; i<n; i++) {
 			// 자본 기준 내림차순 정렬
@@ -123,12 +124,10 @@ public class Solution {
 
 		for(int[] a : list) System.out.println(Arrays.toString(a));
 		
-		
-		
-		
-		
+	
 		return answer;
 	}
+	
 	public static void main(String[] args) {
 //		System.out.println(findDifference(new int[] {1,2,3}, new int[] {2,4,6}));
 

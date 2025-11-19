@@ -2,30 +2,161 @@ package leetcode;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class Solution {
 
 	public static void main(String[] args) {
-//		System.out.println(closeStrings("abbbbc", "bcaaab"));
+		// LeetCode75 > HashMap/Set > 1675
+		System.out.println(closeStrings("abbbbc", "bcaaab"));
 		
-		int[][] grid = {{3,1,2,2},{1,4,4,5},{2,4,2,2},{2,4,2,2}};
-		equalPairs(grid);
+		// LeetCode75 > HashMap/Set > 2352
+		int[][] grid = { { 3, 1, 2, 2 }, { 1, 4, 4, 5 }, { 2, 4, 2, 2 }, { 2, 4, 2, 2 } };
+		System.out.println(equalPairs(grid));
+		
+		// LeetCode75 > Stack > 735
+		System.out.println(removeStars("leet**cod*e"));
+		
+		// LeetCode75 > Stack > 394
+		System.out.println(decodeString("100[leetcode]"));
 	}
+
+	
+	 // LeetCode75 > Stack > 394
+	 public static String decodeString(String s) {
+		 StringBuilder sb = new StringBuilder();
+	        for(int i = 0; i < s.length(); i++){
+	        	int rep = 0;
+	            // 숫자가 들어오면 저장 후 [] 사이의 문자열을 decode 후 숫자만큼 반복하여 문자열 생성
+	            if(Character.isDigit(s.charAt(i))){
+	                Stack<Integer> st = new Stack<>();
+	                while(Character.isDigit(s.charAt(i))){
+	                	st.push(s.charAt(i) - '0');
+	                	i++;
+	                }
+	                int digit = 1;
+	                int len = st.size();
+	                for(int j= 0; j<len; j++) {	                	
+	                	rep += st.pop() * digit;
+	                	digit *= 10;
+	                }
+	                
+	                String input = "";
+	                if(s.charAt(i) == '[') i++;
+	                while(i < s.length() && s.charAt(i) != ']') {
+	                	input += s.charAt(i);
+	                	i++;
+	                }
+	                String str = decodeString(input);
+	                
+	                
+	                // 문자가 들어오면 str에 +로 연결 
+	                for(int j=0; j<rep;j++) {
+	                	sb.append(str);	  
+	                }	
+	                rep = 0;
+	            }
+	            else if(i < s.length() && s.charAt(i) != '[' && s.charAt(i) != ']') { 
+	            	sb.append(s.charAt(i));
+	            }
+	        }
+         return sb.toString();
+	}
+	 
+	// LeetCode75 > Stack > 735
+	public static int[] asteroidCollision(int[] asteroids) {
+		// 양수는 오른쪽, 음수는 왼쪽으로 움직임
+		// 절댓값으로 크기를 비교하는데, 크기가 같으면 둘 다 터지고, 또한 둘 중 작은 수가 터짐   
+        Stack<Integer> stack = new Stack<>();
+
+        for(int n : asteroids){
+            manage(n, stack);
+        }
+      
+        int[] answer = new int[stack.size()];
+        for(int i = 0; i < answer.length; i++) answer[i] = stack.get(i);
+        
+        return answer;
+    }
+
+    private static void manage(int num, Stack<Integer> st){
+    	// --, -+, ++ 의 경우에는 그대로 숫자 push
+        // +- 의 경우, Math.abs 비교
+        // = 인 경우, stack.pop
+        // > 인 경우, 스택에 있던 숫자가 더 크므로 continue
+        // < 인 경우, stack.pop 후 다시 stack.peek와 비교
+    	
+        if(st.size() < 1){
+            st.push(num);
+            return;
+        }   
+
+        int lastNum = st.peek();
+
+        if(lastNum > 0 && num < 0){
+            int absLastNum = Math.abs(lastNum);
+            int absNum = Math.abs(num);  
+            
+            if(absLastNum == absNum) st.pop();
+            else if(absLastNum > absNum) return;
+            else{
+                st.pop();
+                manage(num, st);
+            }
+        }   
+        else st.push(num);
+        
+        
+        return;
+    }
+    
+    
+	// LeetCode75 > Stack > 2390
+	public static String removeStars(String s) {
+		String answer = "";
+		StringBuilder sb = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+        
+        for(int i=0; i<s.length(); i++) {
+        	// * 이면 pop
+        	if(s.charAt(i) == '*' && stack.size() != 0) stack.pop();
+        	// 순회하면서 문자 삽입
+        	else stack.add(s.charAt(i));
+        }
+        
+        for(Character c: stack) sb.append(c);
+        
+        return answer = sb.toString();
+		
+    }
+
 
 	// LeetCode75 > HashMap/Set > 2352
 	public static int equalPairs(int[][] grid) {
-		
-		Map<Integer, int[]> map = new HashMap<Integer, int[]>();
-		for(int[] arr: grid) {
-			map.put(arr[0], Arrays.copyOfRange(arr, 1, arr.length));
+
+		int answer = 0;
+		int len = grid.length;
+
+		// key로 row를 한 줄씩 저장, value는 같은 row의 개수
+		Map<String, Integer> map = new HashMap<>();
+		for (int[] arr : grid) {
+			map.put(Arrays.toString(arr), map.getOrDefault(arr, 0) + 1);
 		}
-		System.out.println(map);
-		
-		
-		return 0;
+
+		// grid를 col 기준으로 순회
+		for (int i = 0; i < len; i++) {
+			int[] temp = new int[grid.length]; 
+			for (int j = 0; j < len; j++) temp[j] = grid[j][i]; 
+			String str =  Arrays.toString(temp);
+			
+			if(map.containsKey(str)) answer += map.get(str); 
+		}
+
+		return answer;
 	}
-	
+
 	// LeetCode75 > HashMap/Set > 1675
 	public static boolean closeStrings(String word1, String word2) {
 

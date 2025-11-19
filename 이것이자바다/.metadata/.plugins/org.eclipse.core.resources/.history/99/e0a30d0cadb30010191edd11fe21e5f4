@@ -1,7 +1,0 @@
-package ch05;
-
-public enum EnumEx {
-	public enum Week{
-		
-	}
-}

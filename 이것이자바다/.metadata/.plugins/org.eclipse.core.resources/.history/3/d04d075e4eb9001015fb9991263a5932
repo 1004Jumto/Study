@@ -1,7 +1,0 @@
-package ch13.sec02.exam2;
-
-public class Car {
-	public void turnOnLight() {
-		System.out.println("Home: turn on");
-	}
-}

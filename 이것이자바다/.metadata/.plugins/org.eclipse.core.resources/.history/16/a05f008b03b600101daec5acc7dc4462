@@ -1,5 +1,0 @@
-package ch08.test;
-
-public class MySqlDao implements IDataAccessObject {
-
-}
