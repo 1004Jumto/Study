@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 10px;
+            width: 700px; 
+            flex-wrap: nowrap;
+        }
+        @media screen and (max-width:1024px) {
+            .container {
+                flex-wrap: wrap; 
+            }  
+        }
+        @media screen and (max-width:768px) {
+            .container {
+                flex-direction: column;  
+            } 
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/images/pic1.jpg" alt="pic1" class="item">
+        <img src="/images/pic2.jpg" alt="pic2" class="item">
+        <img src="/images/pic3.jpg" alt="pic3" class="item">
+    </div>
+</body>
+</html>

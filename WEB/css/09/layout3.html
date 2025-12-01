@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .wrapper {
+            width: 1000px; 
+            margin: 0 auto; 
+            background-color: #a39e9e;
+            text-align: center;
+            color: aliceblue; 
+            border: 3px solid rgb(3, 3, 3); 
+        }
+        header {
+            padding: 40px 0px; 
+            border: 3px solid rgb(3, 3, 3); 
+        }
+        nav { 
+            /* border: 3px solid rgb(3, 3, 3);  */
+            height: 40px;
+        }
+        nav > ul {
+            margin: 0;
+            padding: 0;
+        }
+        nav > ul > li {
+            list-style-type: none; 
+            border: 3px solid rgb(3, 3, 3); 
+            width: 25%;
+            height: 40px;
+            float: left;
+        } 
+        nav > ul > li:hover {
+            background-color: antiquewhite;
+            cursor: pointer;
+        }
+        nav > ul > li > a:visited {
+            color: aqua;
+        }
+        .content > aside {
+            width: 30%; 
+            height: 228px;
+            padding: 100px 0px;
+            border: 3px solid rgb(3, 3, 3); 
+            float: left;
+        }
+        main { 
+            width: 70%;
+            border: 3px solid rgb(3, 3, 3); 
+            padding: 100px 0px;
+            float: left;
+        }
+        footer { 
+            clear: both;
+            border: 3px solid rgb(3, 3, 3); 
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper"> 
+        <header>header</header> 
+        <nav> 
+            <ul>
+                <li><a href="#1">menu1</a></li>
+                <li><a href="#2">menu2</a></li>
+                <li><a href="#3">menu3</a></li>
+                <li><a href="#4">menu4</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <aside>submenu</aside>
+            <main>main</main>
+        </div>
+        <footer>footer</footer>
+    </div>
+</body>
+</html>
