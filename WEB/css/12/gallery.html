@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 700px;
+            display: grid; 
+            gap: 5px;
+            grid-template-areas: 
+                "box6 box1 box2 box2"
+                "box6 box3 box3 box4"
+                "box6 box3 box3 box5";
+        }
+        /* .gallery{
+            object-fit: fill;
+        } */
+        .items {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 7px;
+        }
+
+        /* 마우스 오버(Hover) 시 효과 */
+        .gallery:hover .items {
+            /* 마우스 오버 시 이미지를 1.03배 확대 */
+            transform: scale(1.03); 
+            
+            /* 마우스 오버 시 그림자를 더 진하게 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); 
+            
+            /* 마우스 오버 시 이미지의 명도 증가 (더 밝게) */
+            filter: brightness(110%);
+        }
+
+        #box1 { grid-area: box1; }
+        #box2 { grid-area: box2; }
+        #box3 { grid-area: box3; }
+        #box4 { grid-area: box4; }
+        #box5 { grid-area: box5; }
+        #box6 { grid-area: box6; }
+
+        @media screen and (max-width:460px) {
+            .container {
+                width: 7460px;
+                margin: 10px auto;
+                display: block;
+            }
+            .items {
+                height: 200px;
+                margin-bottom: 10px;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gallery" id="box1"><img class="items" src="/images/지브리1.jpg"></div>
+        <div class="gallery" id="box2"><img class="items" src="/images/지브리2.jpg"></div>
+        <div class="gallery" id="box3"><img class="items" src="/images/지브리3.jpg"></div>
+        <div class="gallery" id="box4"><img class="items" src="/images/지브리4.jpg"></div>
+        <div class="gallery" id="box5"><img class="items" src="/images/지브리5.jpg"></div>
+        <div class="gallery" id="box6"><img class="items" src="/images/지브리6.jpg"></div>
+    </div>  
+</body>
+</html>
