@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // html은 위->아래로 내려가며 읽기 때문에 현재 위치에선 heading의 존재를 모름
+        // document.querySelector('#heading').style.color = 'red';
+        document.write('<h1>안녕하세요</h1>');
+        console.log('이건 로그')
+
+        if(confirm('주문?')) console.log('확인클릭');
+        else console.log('취소클릭');
+
+        
+    </script>
+
+    <!-- 외부 스크립트 적용 -->
+    <!-- <script src="script.js"></script> -->
+</head>
+<body>
+    <h1 id="heading">자바스크립트</h1>
+    <script>
+        // window.document.querySelector('#heading').style.color = 'red';
+        document.querySelector('#heading').style.color = 'red';
+        
+    </script>
+
+</body>
+</html>
