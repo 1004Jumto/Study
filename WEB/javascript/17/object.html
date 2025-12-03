@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let now = new Date();
+        document.write(`현재 시간은 ${now}`);
+
+        let car = {
+            // 속성
+            company : "Hyundai",
+            model : "Grandeur",
+            displacement : 3000,
+            color : "gray",
+            
+            // 메소드
+            start : function(){
+                console.log('시동걸기');
+            },
+            move : function () {
+                console.log('움직이기');
+            }
+        };
+
+        // 속성,메소드 사용
+        console.log(typeof(car));
+        console.log(car.model);
+        console.log(car['company']);
+        car.start();
+
+        // 속성 추가
+        car.price = 4000;
+        console.log(car.price);
+
+        function Calculator(a, b){
+            var n1 = a;     // 로컬변수
+            var n2 = b;
+            this.n3 = a;    // this 붙이면 속성
+            this.add = function(){
+                return n1 + n2;
+            }
+        }
+
+        let cal = new Calculator(2,3);
+        console.log(cal);
+        console.log(cal.n3);
+        console.log(cal.add());
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

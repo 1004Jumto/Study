@@ -1,26 +1,108 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        a = 1;
-        console.log(typeof(a));
-        a = "이름";
-        console.log(typeof(a));
-        // 타입종류
-        // number, string, boolean, object, function
+        // 동적타이핑 
+        a = 1; // 숫자
+        console.log(typeof (a)); // 값의 타입
+        a = "이름"; // 문자열
+        console.log(typeof (a));
+        /*
+        타입의 종류
+        - number
+        - string
+        - boolean
+        - object
+        - function *(일급객체)
+        - null, undefined
+        */
+        /*
+        변수 선언시 키워드
+        var, let, const
+        */
+
+        var b = 1; // 선언
+        var b = 2; // 재선언(1)
+        console.log(b);
+
+        //var c;
+        // 호이스팅(hoisting) -> 코드 상단으로 선언부 이동
+        console.log(c);
+        var c = 10;
+
+        // let
+        let d = 10;
+        // let d = 20; 재선언 불가
+        d = 20; // 재할당은 가능
+
+        // const (상수)
+        const e = 10;
+        // e = 20; 재할당 불가
+        const f = [1, 2, 3];
+        f[0] = 4;
+        console.log(f); // 4,2,3
+
+        // 참조자료형 : 객체, 배열, 함수
+        console.log(typeof alert); // alert의 타입 : function
+
+        // 템플릿 문자열
         let name = "홍길동";
-        let text = "안녕하세요 저는 "+name+"입니다";
-        text += "반갑습니다";
-        let text2 = `안녕하세요 저는 ${name} 입니다 
-                    반갑습니다 잘 부탁드립니다`;
+        let text = "안녕하세요 저는 " + name + "입니다.";
+        text += "반갑습니다.";
+        let text2 = `안녕하세요 저는 ${name}입니다.
+반갑습니다.`;
         console.log(text2);
+
+        /*
+        배열
+        - 길이제한 없음
+        - 타입제한 없음
+        - [ ] 사용
+        */
+
+        // 자동형변환
+        let g = 1; // 숫자
+        let h = '2'; // 문자
+        let i = g + h; // + : '1' + '2', - : 1 - 2
+        console.log(i, typeof (i));
+
+        // 강제형변환
+        // 문자 -> 숫자
+        h = null;
+        let i2 = g + Number(h);
+        console.log(i2, typeof (i2));
+
+        let i3 = g + parseInt(h);
+        console.log(i3, typeof (i3));
+
+        // 숫자 -> 문자
+        // let g2 = String(g);
+        // let g2 = g.toString(); .toString(16) -> 16진수로 리턴
+        let g2 = g + '';
+        console.log(g2, typeof (g2));
+
+        // if (?) ? : boolean
+        console.log(Boolean(g2));
+        // 값이있으면 true, 없으면 false
+        g2 = -1;
+        if (g2) {
+            console.log(true);
+        } else {
+            console.log(false);
+        }
+
     </script>
+
+
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
+ 

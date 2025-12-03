@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        aaa();  // 실행 가능
+        /*hoisting : 함수 선언을 하면 함수 정의가 맨 위로 인식됨*/
+        function aaa() {
+            console.log('aaa');
+        }
+        aaa();  // 실행 가능
+
+        // 익명함수
+        // bbb();  // 실행 불가능
+        let bbb = function () {
+            console.log('bbb');
+        }
+        bbb();  // 실행가능
+
+        // 즉시 실행 함수
+        (function ccc() {
+            console.log('ccc');
+        })();
+
+        // 화살표함수
+        let ddd = () => {
+            console.log('ddd');
+        };
+        ddd();
+        // 화살표함수 매개변수
+        let ddd1 = (a) => {
+            console.log('ddd1: ' + (a + 1));
+        }
+        ddd1(3);
+
+        // 동적타이핑, 파라미터, 매개변수
+        function add(n1, n2) {
+            let sum = n1 + n2;
+            console.log(sum);
+        }
+        add(1, 2);
+        add('hello', 'world');
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
