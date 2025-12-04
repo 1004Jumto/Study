@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="width: 300px; height: 300px;">
+        <h1 id="heading">에티오피아</h1>
+        <img src="/WEB/images/pic1.jpg" alt="" id="cat" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <script>
+        let haeding = document.querySelector('#heading');
+        let cat = document.querySelector('#cat');
+        heading.onclick = () => heading.innerHTML = '나를 누르다니..';
+        let n = 1;
+        cat.onclick = () => {
+            heading.innerHTML = `지브리${n}.jpg`;
+            cat.src = `/WEB/images/지브리${n++}.jpg`;
+            if(n > 6) n = 1;
+        } 
+
+    </script>
+</body>
+
+</html>

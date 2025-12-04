@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Web Programming</h1>
+    <form action="">
+        <label for="subject" class="hidden">주제</label>
+        <input type="text" id="subject"  autofocus >
+        <button>추가</button>
+    </form>
+
+    <hr>
+
+    <ul id="itemList"></ul>
+
+    <script>
+        function newRegister(params) {
+            const newItem = document.createElement('li');
+            const subject = document.querySelector('#subject');
+            const newText = document.createTextNode(subject.value);
+
+            newItem.appendChild(newText);
+ 
+            const itemList = document.querySelector('#itemList');
+            itemList.appendChild(newItem);
+
+            subject.value = "";
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
+            const button = document.querySelector('button');
+            button.addEventListener("click", function(e){
+                e.preventDefault();
+                newRegister();
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        자바 스크립트 이벤트 적용
+        */
+        let btn1 = document.getElementById('btn1');
+        let btn2 = document.getElementById('btn2');
+        console.log(btn2);      // null -> 아직 btn2 가 생성되기 전이므로
+
+        // onload는 window가 로드 된 후에 실행됨  
+        window.onload = function () {
+            let btn2 = document.getElementById('btn2');
+            console.log(btn2);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" id="btn1" value="버튼1" onclick="console.log('버튼 1 클릭');">
+    <input type="button" id="btn2" value="버튼2">
+    <input type="button" id="btn3" value="버튼3">
+    <div id="div1">
+        <!-- a 태그는 기본적으로 해당 링크로 이동하는 이벤트를 가짐  -->
+        <a href="http://naver.com" id="a1">네이버</a>
+    </div>
+    <script>
+        document.getElementById('a1').onclick = function (e) {
+            e.preventDefault();     // a 태그와 같이 기본적으로 적용되는 이벤트 제거
+            e.stopPropagation();    // 이벤트 전파 중지 -> 다른 이벤트가 실행되지 않도록 함
+            alert('a태그');
+        }
+        document.getElementById('div1').onclick = function (params) {
+            alert('div 태그');      // div > a 이기 때문에 둘 다 수행됨
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html><script>
+    let a = 5;
+    let b = 4;
+    let c = a / b;
+    console.log(c);
+
+    // 비교연산
+    let a2 = '5'; // 문자열
+    // 숫자와 문자열 비교
+    console.log(a == a2); // 값만 비교
+    console.log(a === a2); // 값도 비교, 타입도 비교
+
+    if (a === a2 && console.log('실행')) {
+        console.log(true);
+    }
+
+    // 기본자료형
+    let a3 = a;
+    a3 = 6;
+    console.log(a); // 5
+
+    // 참조자료형
+    let a4 = [1,2,3];
+    let a5 = a4; // 주소값
+    a5[0] = 4;
+    console.log(a4);
+    let a6 = [1,2,3];
+    console.log(a4 == a6); // 주소값 비교
+
+    // 삼항연산
+    let a7 = a == 5 ? '정답' : '오답';
+    console.log(a7);
+
+</script>

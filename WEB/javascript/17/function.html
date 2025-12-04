@@ -1,54 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        aaa();  // 실행 가능
-        /*hoisting : 함수 선언을 하면 함수 정의가 맨 위로 인식됨*/
-        function aaa() {
-            console.log('aaa');
-        }
-        aaa();  // 실행 가능
-
-        // 익명함수
-        // bbb();  // 실행 불가능
-        let bbb = function () {
-            console.log('bbb');
-        }
-        bbb();  // 실행가능
-
-        // 즉시 실행 함수
-        (function ccc() {
-            console.log('ccc');
-        })();
-
-        // 화살표함수
-        let ddd = () => {
-            console.log('ddd');
-        };
-        ddd();
-        // 화살표함수 매개변수
-        let ddd1 = (a) => {
-            console.log('ddd1: ' + (a + 1));
-        }
-        ddd1(3);
-
-        // 동적타이핑, 파라미터, 매개변수
-        function add(n1, n2) {
-            let sum = n1 + n2;
-            console.log(sum);
-        }
-        add(1, 2);
-        add('hello', 'world');
-
-    </script>
 </head>
-
 <body>
-
+    
 </body>
+</html><script>
+    aaa(); // 함수가 호이스팅되서 실행 가능
+    //bbb(); // 실행불가
+    // 일반적인 함수
+    // 함수 선언(정의)
+    function aaa() {
+        console.log('aaa');
+    }
+    // 함수 실행(호출)
+    aaa();
 
-</html>
+    // 이름이 없는 함수(익명함수)
+    let bbb = function () {
+        console.log('bbb');
+    };
+    bbb();
+
+    // 즉시실행함수
+    (function ccc() {
+        console.log('ccc');
+    })();
+
+    // 화살표함수(익명함수)
+    let ddd = a => console.log('ddd:'+a);
+    ddd('안녕');
+
+    // 파라미터, 매개변수
+    function add(n1, n2) {
+        let sum = n1 + n2;
+        console.log(sum);
+    }
+    add(1,2);
+    add('안','녕');
+    function add(n1, n2) {
+        let sum = n1 + n2;
+        return sum;
+    }
+    let sum = add(1,2);
+    console.log(sum);
+    console.log(add(1,2));
+
+    // 매개변수 기본값
+    function multiple(a, b=5, c=10) {
+        return a+b+c;
+    }
+    console.log(multiple(1));
+    
+    // 가변인자
+    function multiple2() {
+        console.log(arguments);
+    }
+    multiple2(1,2,3,4,5,6,7,8,9,10);
+
+    // 콜백(callback) -> 함수를 매개변수로 전달
+    function calculator(func, x, y) { // func : 매개변수
+        let result = func(x, y); // 함수를 실행
+        return result;
+    }
+    console.log(calculator(add, 10, 20)); // 일반함수를 콜백으로
+    console.log(calculator(function(x, y) { // 익명함수를 콜백으로
+        return x-y;
+    }, 20, 10));
+    console.log(calculator((x,y)=> x*y, 10, 5)); // 화살표함수를 콜백으로
+
+    // return
+    // 1. 값을 호출한곳으로 돌려주는 역할
+    // 2. 함수의 실행을 중지하는 역할
+    function eee() {
+        console.log(1);
+        return; // 실행 중지
+        console.log(2);
+    }
+    eee();
+
+    // 내부함수 - 함수안에 있는 함수
+    function eat() {
+        console.log('점심을 먹는다.');
+    }
+    
+    function home() {
+        function eat() {
+            console.log('저녁을 먹는다.');
+        }
+        eat();
+    }
+    eat();
+    home();
+
+    // 클로저(closure)
+    // 독립적인 변수를 가지고 있는 함수
+    // 내부함수를 이용해서 별도의 스코프 존재
+    function test() {
+        let text = '안녕'; //지역변수
+    }
+    test();
+    // text 지역변수는 함수안에서만 사용, 외부 사용불가
+    // console.log(text); 
+    function test2() {
+        let text = '안녕';
+        return function() { // 내부함수
+            return text;
+        }
+    }
+    let t2 = test2();
+    console.log(t2());
+
+    function test3(name) {
+        let text = '안녕 '+name;
+        return function() {
+            return text;
+        }
+    }
+    let t3 = test3('홍길동');
+    let t4 = test3('김길동');
+    console.log(t3());
+    console.log(t4());
+</script>

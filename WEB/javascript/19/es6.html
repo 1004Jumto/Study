@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3];
+        let arr4 = [...arr, 4];
+        console.log(arr4);
+
+        let obj1 = { a: 1, b: 2 };
+        console.log(obj1);
+
+        let obj2 = { ...obj1, c: 3 };
+        console.log(obj2);
+
+        obj2 = { ...obj2, b: 4 };
+        console.log(obj2);
+
+        // 객체 확장 표현식
+        let propertyName = 'name';
+        obj1[propertyName] = '홍길동';
+
+        console.log(obj1);
+
+        let obj3 = {
+            a: 1, 
+            b : 2, 
+            propertyName : '홍길동'
+        };
+        console.log(obj3);
+ 
+        let obj4 = {
+            a: 1, 
+            b : 2, 
+            [propertyName] : '홍길동'
+        };
+        console.log(obj4);
+
+        let member = {
+            name : '빨강머리앤',
+            age : 15,
+            email : 'Ann@avonlea.valley'
+        };
+        //구조 분해 할당
+        let {name, age, email} = member;
+        console.log(name, age, email);
+
+    </script>
+</body>
+
+</html>
