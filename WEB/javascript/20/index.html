@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="/WEB/javascript/20/jquery-3.7.1.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        window.onload = function () {
+            $("*").css('color', 'green');
+            $('h1').css('color', 'orange');
+            $("ul > li").css('color', 'gold');
+            
+            console.log($("ul > li"));
+            $("ul > li").each(function (i, e) {
+                console.log(e.innerHTML);
+            });
+        };
+        
+
+
+    </script>
+
+    <h1>안녕하세요!</h1>
+    <p><strong>집 가고 싶다</strong></p>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+    </ul>
+</body>
+</html>
