@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/WEB/jquery/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // $(".btn").click(function () {
+            //     console.log(this);
+            //     let name = $(this).text();
+            //     console.log(name);
+            //     alert(name);
+            // });
+
+            
+            // $(".btn").on('click',function () {
+            //     console.log(this);
+            //     let name = $(this).text();
+            //     console.log(name);
+            //     alert(name);
+            // });
+
+              // 이벤트 바인딩 
+            // $(".btn").bind('click', function () {
+            //     console.log(this);
+            //     let name = $(this).text();
+            //     console.log(name);
+            //     alert(name);
+            // });
+
+            // 이벤트를 킨 것
+            let clickBtn = function () {
+                console.log(this);
+                let name = $(this).text();
+                console.log(name);
+                alert(name);
+            } 
+
+            $('.off').click(function () {
+                $('.btn').off('click');
+            });
+            $('.on').click(function () {
+                $('.btn').on('click', clickBtn);
+            });
+            // $('.btn').on('click', clickBtn);
+
+          
+            $('.score').keyup(function () {
+                let sum = 0;
+                $('.score').each((i, e) => {
+                    sum += Number($(e).val());
+                });
+                console.log(sum);
+                $('#total').val(sum);
+                $('#avg').val(sum / 3).toFixed(2);
+
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <button class="btn">버튼1</button>
+    <button class="btn">버튼2</button>
+    <button class="btn">버튼3</button>
+    <button class="btn">버튼4</button>
+    <button class="off">이벤트끄기</button>
+    <button class="on">이벤트켜기</button>
+
+    <hr>
+
+    국어: <input type="text" class="score"><br>
+    수학: <input type="text" class="score"><br>
+    영어: <input type="text" class="score"><br>
+    합계: <input type="text" id="total"><br>
+    평균: <input type="text" id="avg"><br>
+
+
+</body>
+
+</html>

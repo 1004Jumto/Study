@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .redColor{
+            color : red;
+        }    
+    </style>
+    <script>
+        // dom이 실행되고 JavaScript가 실행 되고 싶을때 사용한다.
+
+        // 방법 : $(선택자).메서드명
+        // onload를 사용해서 맨 나중에 실행을 하게 만들어준다.
+        window.onload = function(){
+            console.log('window.onload')
+            // 클래스 추가
+            $("div").addClass('redColor');
+            // 클래스 삭제
+            $("div").removeClass('test');
+            // 속성값 확인
+            console.log($("img").attr('src'));
+            // 속성값 저장
+            $("img").attr('src','/img/cat2.jfif');
+            // 객체를 넣는 방법 : 여러 사진을 넣고 싶으면
+            $("img").attr({
+                width:100,
+                height:100,
+                alt:'고양이 사진'
+            });
+            // 속성값 삭제
+            $("img").removeAttr('alt');
+            /*
+            removeAttr : 속성자체를 삭제
+            removeClass : class 속성의 속성값중 하나를 선택 삭제
+            */
+
+            // 스타일(css)
+            // div 선택자에서 Jquery 로 두번째 인덱스의 스타일을 가져오기
+            console.log($('div').eq(1).css('background-color'));
+            $('div').eq(1).css('background-color','pink'); //yellow 가 적용이 되었다가 pink가 적용되는거야.
+            // 스타일 속성을 삭제 하고 싶으면?
+            // css를 삭제 하려면 빈 값으로 넣어준다.
+            $('div').eq(1).css('background-color','');
+
+            // text() - innerText , html() - innerHTML 과 유사
+            let text = $('div').eq(4).text();
+            console.log(text);
+            // 값을 넣어주고 싶을때
+            $('div').eq(4).text(5);
+            $('div').eq(4).html('<h1>안녕</h1>');
+            
+            /*
+                객체 제거
+                remove() - 객체를 제거
+                empty() - 객체 안 제거 (비우기)
+            */
+            // $('body').remove(); // body 태그 자체가 사라진다.
+            // $('body').empty(); // body 태그는 살아 있고 내용물이 사라진다.
+
+            // 객체 추가
+            // A.append(B) : A안쪽 맨밑에 B가 추가
+            $("#first").append('<h1>새로운 객체</h1>');
+            // A.before(B) : A앞에 B 추가
+            $("#first").before("<div>영</div>");
+            // A.agter(B) : A뒤에 B 추가
+            $("#first").after("<div>하나반</div>");
+        }
+
+        //   // 클래스 추가
+        // 이렇게만 적으면 적용이 되지 않는다.
+        //     $("div").addClass('redColor');
+
+        
+        // ready 라는 핸들러는 dom 이 준비 되었을때 시작
+        $(document).ready(function(){
+            console.log('document.onload')
+            $("div").addClass('redColor');
+        });
+
+        // 바로 위 document 와 똑같이 실행이 된다.
+        // JavaScript는 나중에 실행하고 jqeury 를 바로 실행하고 싶을 때 사용
+        $(function(){
+            console.log('$.onload')
+        })
+    </script>
+</head>
+<body>
+    <div id="first">하나</div>
+    <div style="background-color: yellow;">둘</div>
+    <div class="test">셋</div>
+    <div>넷</div>
+    <div>다섯</div>
+    <img src="/img/cat1.jfif">
+</body>
+</html>

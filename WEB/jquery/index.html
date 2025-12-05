@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // 선택자
+        window.onload = function() {
+            //$("*").css('color','blue');
+            $("h1").css('color','blue');
+
+            console.log($("ul > li"));
+            $("ul > li").each(function(i, e) {
+                console.log(e.innerHTML);
+            });
+            let elems = document.querySelectorAll('ul > li');
+            elems.forEach((e,i)=>{
+                console.log(e.innerHTML);
+            });
+            //$("ul").append("<li>Spring</li>");
+            let spring = document.createTextNode("Spring");
+            let liElem = document.createElement("li");
+            liElem.appendChild(spring);
+            let ulElem = document.querySelector("ul");
+            ulElem.appendChild(liElem);
+        };
+    </script>
+</head>
+<body>
+    <h1>안녕하세요</h1>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+</body>
+</html>

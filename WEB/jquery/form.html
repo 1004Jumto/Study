@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function save() {
+            // 비번 값이 입력되어있는지 체크
+            if($('input[name="password"]').val() === "") {
+                alert('비밀번호를 입력하세요');
+            }
+            
+            if($('input[name="age"]').val() === ""){
+                alert('나이를 입력하세요');
+            }
+        }
+        $(function(){
+
+        })
+    </script>
+</head>
+<!-- 아이디와 비밀번호가 입력되어있는지 확인
+ 입력되어잇으면 전송, 아니면 전송안함
+  -->
+
+<body>
+    <form method="post" action="form.html" onsubmit="return save();" enctype="multipart/form-data">
+        아이디:<input type="text" name="id" value="a" tabindex="1" maxlength="5" required autofocus readonly><br>
+        비밀번호:<input type="password" tabindex="3" name="password" placeholder="비밀번호를 입력해 주세요"><br>
+        성별 : <input type="radio" tabindex="2" name="gender" value="남" id="gender1" checked><label for="gender1">남자
+        </label>
+        <input type="radio" name="gender" value="여" id="gender2"><label for="gender2">여자</label><br>
+        취미 : <input type="checkbox" name="hobby" value="게임">게임<br>
+        <input type="checkbox" name="hobby" value="영화">영화<br>
+        <input type="checkbox" name="hobby" value="독서" checked>독서<br>
+        <input type="checkbox" name="hobby" value="낚시">낚시<br>
+        나이 : <input type="number" name="age"><br>
+        생일 : <input type="date" name="birth"><br>
+        프로필사진 : <input type="file" name="profile" multiple><br>
+        자기소개 : <textarea name="introduce">안녕하세요</textarea><br>
+        지역 :
+        <select name="local">
+            <option value="서울">서울</option>
+            <option value="부산" selected>부산</option>
+            <option value="제주">제주</option>
+        </select>
+        <input type="hidden" name="member_no" value="1"><br>
+        <input type="image" src="/WEB/images/지브리1.jpg" /><br>
+        <input type="submit" value="회원가입">
+        <input type="reset" value="초기화">
+        <input type="button" value="임시저장" onclick="alert('임시저장되었습니다.')">
+        <button>버튼</button>
+    </form>
+</body>
+
+</html>
