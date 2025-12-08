@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 비동기로 실행됨 
+        // -> 응답을 가져오는 속도보다 console.log가 실행되는 속도가 빨라서 console에는 안찍힘
+        let req = new XMLHttpRequest();
+        req.open('get', 'https://jsonplaceholder.typicode.com/posts');
+        req.send();
+        console.log(req.response);  // 내용 안찍힘
+
+        req.onreadystatechange = function () {
+            if(this.readyState == req.DONE){
+                if(this.status == 200){
+                    console.log(req.response);
+                }
+                else{
+                    console.log(this.status);
+                }   
+            }
+        }
+
+
+
+
+
+        // ES6 - Promise
+        function funcA(callback) {
+            req.open('get','https://jsonplaceholder.typicode.com/posts/1/comments')
+            req.send();
+            callback(req.response);
+        }
+        function test() {
+            return new Promise(function (resolve, reject) {
+                funcA(function (res) {
+                    resolve(res);
+                });
+            });
+        }
+        test().then(function(res){
+            req.onreadystatechange = function(){
+                if(this.readyState == req.DONE && this.status == 200){
+                    console.log(req.response);
+                }
+            }
+        })
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

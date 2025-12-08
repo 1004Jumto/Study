@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                alert(1);
+
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts/1/comments',
+                    method: 'get',
+                    data: {     // 파라미터
+                        page : 1
+                    },
+                    cache : true,   // (default = true)
+                    async : true,   // 비동기여부 (default = true)
+                    success: function (data) {
+                        console.log(data);
+                        $(data).each(function (i, e) {
+                            console.log(e);
+                        });
+                        let content = '<ul>';
+                        $.each(data, function (i, e) {
+                            console.log(e.name);
+                            content += `<li>${e.name}</li>`;
+                        });
+                        content += '</ul>';
+                        $('#box').html(content);
+ 
+                    },
+                    error: function(){
+                        console.log()
+                    }
+                })
+            });
+
+            $('#btn2').click(function(){
+                $.ajax({
+                    url : 'effect.html', 
+                    dataType : 'HTML',
+                    success : function(res){
+                        $('#box').html(res);
+                    }
+                })
+            })
+        });
+
+    </script>
+    <style>
+        #box {
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">ajax</button>
+    <button id="btn2">ajax2</button>
+    <div id="box"></div>
+</body>
+
+</html>
