@@ -10,9 +10,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void regist() {
 		// 이전에는 MemberDAO에서 addMemeber 메소드 호출
-	
+		MemberDAO dao = new MemberDAO();
+		
 		// 스프링에서는 주입받은 MemberDAO 객체로 메소드 호출
 		memberDAO.addMember();
-	}
-
+	} 
 }
