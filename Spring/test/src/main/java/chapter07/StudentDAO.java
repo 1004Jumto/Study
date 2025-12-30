@@ -1,14 +1,29 @@
 package chapter07;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class StudentDAO {
-	
-	@Autowired	// Å¸ÀÔ È®ÀÎ ÈÄ °°Àº ÄÁÅ×ÀÌ³Ê ³»¿¡ ÀÖ´Â µ¿ÀÏÇÑ Å¸ÀÔ °´Ã¼ ÁÖÀÔ
+
+	@Autowired 
 	private SqlSessionTemplate sst;
 	
+	// ëª©ë¡ì¡°íšŒ
+	public List<StudentVO> all(StudentVO vo) {
+		return sst.selectList("student.all", vo);
+	}
 	
+	// í•œê±´ì¡°íšŒ
+	public StudentVO view(int studno) {
+		return sst.selectOne("student.view", studno);
+	}
+	
+	public Map view2(Map map) {
+		return sst.selectOne("student.view2", map);
+	}
 }

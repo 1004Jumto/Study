@@ -1,6 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="student">
-		
-		
+	<sql id="whereSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'"> (name LIKE '%${searchWord}%' OR id LIKE
+					'%${searchWord}%') </if>
+				<if test="searchType != 'all' and searchType != null"> ${searchType} LIKE '%${searchWord}%' </if>
+			</if>
+			<if test="searchGrade > 0"> AND grade = #{searchGrade} </if>
+			<if test="searchMajor != null">
+				AND major1 IN
+				<foreach collection="searchMajor" open="(" close=")"
+					separator="," item="m"> #{m} </foreach>
+			</if>
+		</where>
+	</sql>
+	<select id="all" resultType="chapter07.StudentVO"
+		parameterType="chapter07.StudentVO">
+		SELECT * FROM student
+		<include refid="whereSql" />
+	</select>
+	<select id="count" parameterType="chapter07.StudentVO"
+		resultType="int">
+		SELECT COUNT(*) FROM student
+		<include refid="whereSql" />
+	</select>
+	<resultMap type="chapter07.StudentVO" id="svo">
+		<result column="grade" property="year" />
+	</resultMap>
+	<select id="view" resultType="chapter07.StudentVO"
+		parameterType="int"> SELECT s.name, s.grade, m.name major_name FROM student
+		s JOIN major m ON s.major1 = m.code WHERE studno = #{asdfasdgasdf}
+	</select>
+	<select id="view2" resultType="map" parameterType="map"> SELECT
+		s.name, s.grade, m.name major_name FROM student s JOIN major m ON
+		s.major1 = m.code WHERE studno = #{studno} AND grade = #{grade}
+	</select>
 </mapper>

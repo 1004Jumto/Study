@@ -14,16 +14,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan(basePackages = { "chapter07" })
+@ComponentScan(basePackages = {"chapter07","chapter05"})
 @EnableWebMvc
-public class MvcConfig implements WebMvcConfigurer {
-
+public class MvcConfig implements WebMvcConfigurer{
+	// JSP ê²½ë¡œ (ViewResolver)
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/", ".jsp");
-
 	}
-
+	
 	// hikaricp
 	@Bean
 	public HikariDataSource dataSource() {
@@ -32,28 +31,33 @@ public class MvcConfig implements WebMvcConfigurer {
 		dataSource.setJdbcUrl("jdbc:mariadb://localhost:3306/study");
 		dataSource.setUsername("testuser");
 		dataSource.setPassword("test1234");
-
 		return dataSource;
 	}
-
+	// mybatis
 	@Bean
-	public SqlSessionFactory factory() throws Exception {
+	public SqlSessionFactory sqlSessionFactory() throws Exception{
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
-		ssf.setDataSource(dataSource()); // µ¥ÀÌÅÍ¼Ò½º °´Ã¼ ÁÖÀÔ
-
-		// ¸ÅÆÛÆÄÀÏ(xml)ÀÌ ÀÖ´Â À§Ä¡ ¼³Á¤
+		ssf.setDataSource(dataSource()); // ë°ì´í„°ì†ŒìŠ¤ê°ì²´ ì£¼ì…(setterë°©ì‹)
+		
+		// ë§¤í¼íŒŒì¼(xml)ìˆëŠ” ìœ„ì¹˜ ì„¤ì •
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-
-		// ÇØ´ç °æ·Î¿¡ ÀÖ´Â ¸ğµç xml ÆÄÀÏÀ» ÀĞÀ½
 		ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml"));
-
+		
 		return ssf.getObject();
 	}
-
-	// DAO¿¡ ÁÖÀÔ¹ŞÀ» °´Ã¼
+	// DAOì— ì£¼ì…ë°›ì„ ê°ì²´
 	@Bean
-	public SqlSessionTemplate template() throws Exception {
-		return new SqlSessionTemplate(factory());
+	public SqlSessionTemplate sst() throws Exception {
+		return new SqlSessionTemplate(sqlSessionFactory()); // SqlSessionFactoryê°ì²´ ì£¼ì…(ìƒì„±ì ë°©ì‹)
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
