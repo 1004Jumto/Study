@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class GuestbookServiceTests {
+
     @Autowired
     private GuestbookService guestbookService;
 
@@ -38,5 +39,25 @@ public class GuestbookServiceTests {
         System.out.println("total: " + resultDTO.getTotalPage());
         System.out.println("page: " + resultDTO.getPage());
         resultDTO.getPageList().forEach(System.out::println);
+    }
+
+    @Test
+    public void testSearch() {
+
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .type("tcw")
+                .keyword("test")
+                .build();
+
+        PageResultDTO<GuestbookDTO, Guestbook> resultDTO = guestbookService.getList(pageRequestDTO);
+
+        System.out.println("prev: " + resultDTO.isPrev());
+        System.out.println("next: " + resultDTO.isNext());
+        System.out.println("total: " + resultDTO.getTotalPage());
+        System.out.println("page: " + resultDTO.getPage());
+        resultDTO.getPageList().forEach(System.out::println);
+
     }
 }
