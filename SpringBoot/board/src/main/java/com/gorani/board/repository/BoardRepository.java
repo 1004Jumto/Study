@@ -1,6 +1,7 @@
 package com.gorani.board.repository;
 
 import com.gorani.board.entity.Board;
+import com.gorani.board.repository.search.SearchBoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board, Long> {
+public interface BoardRepository extends JpaRepository<Board, Long>, SearchBoardRepository {
 
     // JPQL
     // “Board 엔티티를 기준으로 writer 연관을 LEFT JOIN 해서 같이 조회하겠다"
@@ -28,5 +29,12 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
             " group by b",
             countQuery = "select count(b) from Board b")
     Page<Object[]> getBoardWithReplyCount(Pageable pageable);
+
+    @Query("select b, w, count(r) " +
+            " from Board b left join b.writer w " +
+            " left outer join Reply r on r.board = b " +
+            " where b.bno = :bno"
+    )
+    Object getBoardByBno(Long bno);
 
 }

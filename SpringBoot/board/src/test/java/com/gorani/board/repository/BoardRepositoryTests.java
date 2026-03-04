@@ -24,9 +24,7 @@ public class BoardRepositoryTests {
 
     @Test
     public void testInsertBoard() {
-
         IntStream.rangeClosed(1, 100).forEach(i -> {
-
             Member member = Member.builder().email("user" + i + "@aaa.com").build();
 
             Board board = Board.builder()
@@ -87,5 +85,30 @@ public class BoardRepositoryTests {
             System.out.println(Arrays.toString(arr));
         });
 
+        /*
+        * 한 행이 Object[] 배열로 리턴
+        * 여러 행이 SQL 결과로 나오게 될 경우 List<Object[]>
+        * */
+
+    }
+
+    @Test
+    public void testReadBoardWithReplyCount() {
+        Object result = boardRepository.getBoardByBno(100L);
+
+        Object[] arr = (Object[]) result;
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
+    public void testSearch1() {
+        boardRepository.search1();
+    }
+
+    @Test
+    public void testSearchPage() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("bno").descending());
+        Page<Object[]> result = boardRepository.searchPage("t", "1", pageable);
     }
 }
