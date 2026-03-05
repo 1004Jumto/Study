@@ -21,9 +21,9 @@ public class ReplyServiceImpl implements ReplyService {
     @Override
     public Long register(ReplyDTO dto) {
 
-        replyRepository.save(dtoToEntity(dto));
-
-        return dto.getRno();
+        Reply reply = dtoToEntity(dto);
+        replyRepository.save(reply);
+        return reply.getRno();
     }
 
     @Override
