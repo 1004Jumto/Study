@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "1fbe41be-7869-403c-bd35-9e3195d00584",
+		"name": "JWT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31838857",
+		"_collection_link": "https://asdf44-8340.postman.co/workspace/react_spring~be1b2892-2a0e-486c-93b1-b1a683fb1ef2/collection/31838857-1fbe41be-7869-403c-bd35-9e3195d00584?action=share&source=collection_link&creator=31838857"
+	},
+	"item": [
+		{
+			"name": "인증",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"client_id\" : \"client_id\",\r\n    \"client_secret\" : \"client_secret\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/api/auth",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
