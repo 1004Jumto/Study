@@ -17,7 +17,7 @@ const Editor = ({ initData, onSubmit }) => {
   const handleChangeDate = (e) => {
     setState({
       ...state,
-      data: e.target.value,
+      date: e.target.value,
     });
   };
 
