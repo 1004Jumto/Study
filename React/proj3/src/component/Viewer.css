@@ -1,0 +1,81 @@
+.Viewer {
+}
+
+.Viewer section {
+  width: 100%;
+  margin-bottom: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.Viewer h4 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.Viewer .emotion_img_wrapper {
+  background-color: #ececec;
+  width: 250px;
+  border-radius: 5px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Viewer .emotion_wrimg_apper_1 {
+  background-color: #64c964;
+}
+
+.Viewer .emotion_wrimg_apper_2 {
+  background-color: #9dd772;
+}
+
+.Viewer .emotion_wrimg_apper_3 {
+  background-color: #fdce17;
+}
+
+.Viewer .emotion_wrimg_apper_4 {
+  background-color: #fd8446;
+}
+
+.Viewer .emotion_wrimg_apper_5 {
+  background-color: #fd565f;
+}
+
+.Viewer .emotion_img_wrapper img {
+  width: 50%;
+}
+
+.Viewer .emotion_descript {
+  font-size: 25px;
+  color: white;
+}
+
+.Viewer .content_wrapper {
+  width: 100%;
+  background-color: #ececec;
+  border-radius: 5px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.Viewer .content_wrapper p {
+  padding: 20px;
+  text-align: left;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 2.5;
+}
+
+.Viewer .info_section .content_wrapper {
+  font-size: 18px;
+}
+
+.Viewer .button_section {
+  min-width: 70px;
+}

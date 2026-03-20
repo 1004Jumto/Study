@@ -79,9 +79,24 @@ function App() {
   };
 
   const mockDate = [
-    { id: "mock1", date: new Date().getTime(), content: "mock1", emotionId: 1 },
-    { id: "mock2", date: new Date().getTime(), content: "mock2", emotionId: 3 },
-    { id: "mock3", date: new Date().getTime(), content: "mock3", emotionId: 4 },
+    {
+      id: "mock1",
+      date: new Date().getTime() - 1,
+      content: "mock1",
+      emotionId: 1,
+    },
+    {
+      id: "mock2",
+      date: new Date().getTime() - 2,
+      content: "mock2",
+      emotionId: 3,
+    },
+    {
+      id: "mock3",
+      date: new Date().getTime() - 3,
+      content: "mock3",
+      emotionId: 4,
+    },
   ];
 
   if (!isDataLoaded) {

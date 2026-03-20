@@ -13,11 +13,11 @@
 }
 
 .Button_positive {
-  background-color: blue;
+  background-color: rgb(128, 204, 179);
   color: white;
 }
 
 .Button_negative {
-  background-color: red;
+  background-color: rgb(202, 123, 123);
   color: black;
 }
